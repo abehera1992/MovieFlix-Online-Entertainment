@@ -1,0 +1,243 @@
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
+}
+#movieflix-brand {
+  font-size: 20px;
+  font-weight: 600;
+  color: #7b4397;
+}
+
+#admin-signin {
+  /*display: none;*/
+}
+
+#admin-account {
+  display: none;
+  color: #fdcc52;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#admin-menu-btn-Grp {
+  position: absolute;
+  top: 100px;
+  z-index: 3;
+
+}
+
+#custom-btn-grp-1 {
+  background-color: #7cb754;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+}
+#custom-btn-grp-2 {
+  background-color: #e2de63;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  color: black;
+}
+#custom-btn-grp-3 {
+  background-color: #f26e57;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/*main{
+  background: #e0c5a3;
+  width: 80%;
+  margin: 30px auto;
+  border-radius: 10px;
+}*/
+
+.content-dashboard {
+  position: absolute;
+  width: 100%;
+  padding: 20px;
+  top: 150px;
+  background: rgba(213, 219, 226, 0.89);
+  border-radius: 20px;
+  margin: 10px auto;
+}
+.content ul{
+  padding: 0;
+  list-style-type: none;
+  margin: 30px 0;
+}
+
+.content li{
+  padding: 20px 0 30px 0;
+  border-top: 1px solid #ffffff;
+  color: #444;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.content li span{
+  float: right;
+}
+.remove{
+  float: right;
+  padding: 0 5px 0 20px;
+  width: 20px;
+  text-align: center;
+  border-radius: 20px;
+  color: crimson;
+  cursor: pointer;
+}
+
+
+#titleSearch {
+  padding: 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  border: 2px solid #e2d49a;
+}
+
+.title-section-panel {
+  width: 100%;
+  min-height: 100%;
+  padding: 10px 70px;
+  margin: 5px 0;
+  border:2px solid #ffffff;
+  border-radius: 20px;
+  box-sizing:border-box;
+  overflow-x: hidden;
+}
+.form-control{
+  margin-top: 5px;
+}
+
+#newMovieBtn {
+  position: relative;
+  left: 20px;
+  margin-top: 5px;
+  padding: 6.5px 10px 6.5px 10px;
+}
+
+#newTvBtn {
+  position: relative;
+  left: 20px;
+  margin-top: 5px;
+  padding: 6.5px 10px 6.5px 10px;
+}
+
+.add-title {
+  text-align: center;
+  font-weight: 600;
+  padding-top:40px;
+  color: #347e89;
+}
+
+.thumb-img {
+  width: 100px;
+  margin: -5px 10px 0 0;
+}
+#catalog-movie {
+  font-size: 18px;
+  font-weight: 600;
+  color: brown;
+}
+#catalog-tv {
+  font-size: 18px;
+  font-weight: 600;
+  color: brown;
+}
+
+
+/*
+*css for file upload
+*/
+#movie-img-upload {
+  position: relative;
+  margin-top: 5px;
+  left: 15px;
+}
+.title-img-upload {
+  position: relative;
+  left: 15px;
+  font-weight: 600;
+  color: #1f4177;
+}
+
+#titlecatalog {
+  width: 100%;
+  max-height: 100%;
+  position: relative;
+  top: 250px;
+  margin: 10px auto;
+  left: 16px;
+}
+#catalogh2 {
+  padding-top: 10px;
+}
+.thumbnail {
+  margin: 5px 10px;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.thumb-img{
+  width:150px;
+  padding: 10px;
+}
+
+.titleNm {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.titleDr {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detailsInfo {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.highlight {
+  font-size: 14px;
+  font-weight: 600;
+  color: orange;
+}
+
+#titledeletecatalog {
+  width: 100%;
+  max-height: 100%;
+  position: relative;
+  top: 220px;
+  margin: 10px auto;
+  left: 16px;
+  padding: 5px 15px;
+}
+.deleteh4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: orange;
+  padding-bottom: 0;
+  margin: 0;
+}

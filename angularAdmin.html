@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='titleApp'>
+ <!-- Here the html loads angular functionality from controller-myApp which is in app.js -->
+  <head>
+    <meta name="author" content="Radhika Sondankar">
+    <link rel="icon" type="image/png" href="img/movie-logo.png">
+
+    <title>MovieFlix-Admin</title>
+    <!-- Main theme CSS -->
+    <link href="css/angularAdmin.css" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Angular-Toggle-Btn CSS -->
+    <link href="css/angular-bootstrap-toggle.min.css" rel="stylesheet" type="text/css">
+    <!-- Jquery and bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/modernizr.js"></script> <!-- Modernizr -->
+
+
+    <!--Angular JS Framework -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-bootstrap-toggle.js"></script>
+    <script src="js/ng-file-upload-shim.js"></script>
+    <script src="js/ng-file-upload.js"></script>
+    <script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
+
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+            <a id="movieflix-brand" class="navbar-brand" href="#">MovieFlix ADMIN</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav navbar-right">
+           <li class="active"><a href="#">DASHBOARD<span class="sr-only">(current)</span></a></li>
+           <li><a href="javascript:void(0)" id="admin-signin">SIGN IN</a></li>
+           <li><a href="javascript:void(0)" id="admin-account"</a>Logout</li>
+         </ul>
+       </div>
+      </div>
+   </nav>
+   <section id="dashboard" ng-controller="titleController">
+     <div class="content">
+       <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+              <div id="admin-menu-btn-Grp" class="btn-group btn-group-justified">
+                  <a href="#" class="btn btn-primary" id="custom-btn-grp-1" ng-click="toggleSectionAdd()">ADD TITLE</a>
+                  <a href="#" class="btn btn-primary" id="custom-btn-grp-2" ng-click="toggleSectionEdit()">EDIT TITLE</a>
+                  <a href="#" class="btn btn-primary" id="custom-btn-grp-3" ng-click="toggleSectionDelete()">DELETE TITLE</a>
+                </div>
+            </div>
+            <div class="col-md-12">
+              <div class="content-dashboard">
+                <input id="titleSearch" type="text" ng-model="search" placeholder="Browse Movies and TV Shows"/>
+                  <div id="movie-section" ng-show="titleMVShow"> <!-- show-tag: titleMVShow -->
+                    <div class="col-md-12 text-center" >
+                      <toggle class="toggle-switch" ng-model="toggleValue" ng-change="changed()"  on="MOVIES" off="TV SHOWS" onstyle="btn-warning" offstyle="btn-info"></toggle>
+                    </div>
+                    <form name="form">
+                      <h4 class="add-title">ADD NEW MOVIE</h4>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="title-section-panel">
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input type="text" class="form-control" id="movie-name" ng-model="newMovie.movieName" placeholder="Enter Movie Name" required autofocus>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input type="text" class="form-control" id="movie-actors" ng-model="newMovie.Cast" placeholder="Enter Movie Cast" required>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input type="text" class="form-control" id="movie-directors" ng-model="newMovie.Director" placeholder="Enter Movie Director" required>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input list="title-genre-list" class="form-control" id="title-genre-movie" ng-model="newMovie.Genre" placeholder="Enter Movie Genre" required>
+                                <datalist id="title-genre-list">
+                                  <option ng-repeat="genre in genres" value="{{genre.gname}}">
+                                </datalist>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input type="number" class="form-control" id="imdb-rating-movie" ng-model="newMovie.imdbRating" placeholder="Enter Movie IMDB Rating" min="0" max="10" step="0.1" required>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input list="title-release-yr" class="form-control" id="title-year-movie" ng-model="newMovie.ReleaseYear" placeholder="Enter Movie Release Year" required>
+                                <datalist id="title-release-yr">
+                                  <option ng-repeat="year in releaseyr" value="{{year.yr}}">
+                                </datalist>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div id="movie-img-upload" class="button btn btn-warning" ngf-select ng-model="newMovie.thumb" name="file" ngf-pattern="'image/*'"
+                                   ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                   ngf-resize="{width: 130, height: 97}">Select File</div>
+                              <button id="newMovieBtn" class="btn btn-warning" ng-click="addMovie(newMovie)">ADD</button>
+                            </div>
+                          </div> <!-- title-section-panel ends -->
+
+                        </div>
+                      </div>
+                    </form>
+                     <div class="title-section-panel">
+                      <ul>
+                       <li ng-repeat="movie in movies | orderBy:'movieName' | filter:search">
+                        <img ng-src="{{movie.thumb}}" style="margin: -10px 10px 0 0; float: left; width: 50px; overflow: hidden;" ng-show="movie.thumb" />
+                          {{movie.movieName}} - {{movie.Cast.toString()}} - {{movie.Director.toString()}}
+                         <div class="remove" ng-click="removedMovie(movie)">x</div>
+                         <span class="display-right"> {{movie.Genre}} - {{movie.imdbRating}} - {{movie.ReleaseYear}}</span>
+                       </li>
+                     </ul>
+                    </div>
+                  </div>
+
+                  <div id="TVShows-section" ng-show="titleTVShow"> <!--Div TV shows Starts -->
+                    <div class="col-md-12 text-center" >
+                      <toggle class="toggle-switch" ng-model="toggleValue" ng-change="changed()"  on="MOVIES" off="TV SHOWS" onstyle="btn-warning" offstyle="btn-info"></toggle>
+                    </div>
+                    <form name="form">
+                      <h4 class="add-title">ADD NEW TV SHOW</h4>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="title-section-panel">
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input type="text" class="form-control" id="tv-name" ng-model="newTv.TvShowName" placeholder="Enter Show Name" required autofocus>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input type="text" class="form-control" id="tv-actors" ng-model="newTv.TvCast" placeholder="Enter Show Cast" required>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input type="text" class="form-control" id="tv-directors" ng-model="newTv.TvDirector" placeholder="Enter Show Director" required>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input list="title-genre-list" class="form-control" id="title-genre-tv" ng-model="newTv.TvGenre" placeholder="Enter Show Genre" required>
+                                <datalist id="title-genre-list">
+                                  <option ng-repeat="genre in genres" value="{{genre.gname}}">
+                                </datalist>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input type="number" class="form-control" id="imdb-rating-tv" ng-model="newTv.TvimdbRating" placeholder="Enter Show IMDB Rating" min="0" max="10" step="0.1" required>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-12 text-center">
+                                <input list="title-release-yr" class="form-control" id="title-year-tv" ng-model="newTv.TvReleaseYear" placeholder="Enter Show Release Year" required>
+                                <datalist id="title-release-yr">
+                                  <option ng-repeat="year in releaseyr" value="{{year.yr}}">
+                                </datalist>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div id="movie-img-upload" class="button btn btn-warning" ngf-select ng-model="newTv.Tvthumb" name="file" ngf-pattern="'image/*'"
+                                   ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                   ngf-resize="{width: 130, height: 97}">Select File</div>
+                                <button id="newTvBtn" class="btn btn-warning" ng-click="addTV(newTv)">ADD</button>
+                            </div>
+                          </div> <!-- title-section-panel ends -->
+
+                        </div>
+                      </div>
+                    </form>
+                    <div class="title-section-panel">
+                      <ul>
+                       <li ng-repeat="shows in tvshow | orderBy:'TvShowName' | filter:search">
+                        <img ng-src="{{shows.Tvthumb}}" style="margin: -10px 10px 0 0; float: left; width: 50px;" ng-show="shows.Tvthumb" />
+                         {{shows.TvShowName}} - {{shows.TvCast.toString()}} - {{shows.TvDirector.toString()}} - {{shows.TvGenre}}
+                         <div class="remove" ng-click="removedTv(shows)">x</div>
+                         <span class="display-right"> {{shows.TvimdbRating}} - {{shows.TvReleaseYear}}</span>
+                       </li>
+                     </ul>
+                    </div>
+                  </div><!-- Div TV-Show section ends -->
+
+                 </div> <!-- Div Content-Dashboard ends -->
+
+             </div>
+          </div>
+
+              <!--Title Listings Start for editing -->
+                    <section id="titlecatalog" class="bg-warning" ng-show="editSection">   <!-- show-tag: editSection -->
+                      <h2 class="text-center" id="catalogh2">CATALOG</h2>
+                      <!-- Title-Movie Catalog -->
+                        <div class='row'>
+                          <h3 class="text-center" id="catalog-movie">Movies</h3>
+                          <div class="col-sm-4" ng-repeat="movie in movies | orderBy: '-movieName' | filter:search">
+
+                            <div class="thumbnail">
+                              <img class="thumb-img" ng-src="{{movie.thumb}}" alt="">
+                                <div class="caption text-center">
+                                  <div ng-hide="showDetails === true">
+                                    <p class="titleNm">Movie: {{movie.movieName}}</p>
+                                    <p class="titleDr">Directed by: {{movie.Director.toString()}} </br>
+                                    </p>
+                                  </div>
+                                  <button id="detailBtn" class="btn btn-xs btn-success"
+                                        ng-hide="showDetails === true"
+                                        ng-click="showDetails = !showDetails">
+                                        Details
+                                  </button>
+                                  <!-- Editing title button and function -->
+                                  <button
+                                    class="btn btn-xs btn-primary"
+                                    ng-show="showDetails"
+                                    ng-click="editMovie(movie)">Edit
+                                  </button>
+
+                                  <button class="btn btn-xs btn-danger"
+                                          ng-show="showDetails === true"
+                                          ng-click="showDetails = !showDetails">
+                                          Close
+                                  </button>
+
+                                  <div class="details" ng-show="showDetails === true">
+                                    <h4>
+                                      <p class='detailsInfo'><span class="highlight">Cast:</span> {{movie.Cast.toString()}}</p>
+                                      <p class='detailsInfo'><span class="highlight">Genre:</span> {{movie.Genre}}</p>
+                                      <p class='detailsInfo'><span class="highlight">IMDB-Rating:</span> {{movie.imdbRating}}<p>
+                                    </h4>
+                                  </div>
+
+                              </div>
+                            </div>      <!-- Thumbnail ends -->
+                          </div>
+                        </div>
+
+                        <!-- Div edit movie modal -->
+                          <script type="text/ng-template" id="modal.html">
+                            <div class="modal fade">
+                             <div class="modal-dialog">
+                               <div class="modal-content">
+                                 <div class="modal-header">
+                                   <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                   <h4 class="modal-title text-center">Edit-Movie</h4>
+                                 </div>
+                                 <div class="modal-body">
+
+                                    <form class="form-horizontal">
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editMovieName">Movie:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.movieName" id="editMovieName" placeholder="" name="editMovieName">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editMovieCast">Cast:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.Cast" id="editMovieCast" placeholder="" name="editMovieCast">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editMovieDirector">Director:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.Director" id="editMovieDirector" placeholder="" name="editMovieDirector">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editMovieGenre">Genre:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.Genre" id="editMovieGenre" placeholder="" name="editMovieGenre">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editMovieIMDB">IMDB:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.imdbRating" id="editMovieIMDB" placeholder="" name="editMovieIMDB">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editMovieYear">Year:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.ReleaseYear" id="editMovieYear" placeholder="" name="editMovieYear">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </form>
+                                 </div>
+                                 <div class="modal-footer">
+                                   <button type="button" ng-click="close('No')" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                   <button type="button" ng-click="saveEdit()" class="btn btn-primary" data-dismiss="modal">Save</button>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                          </script>
+                      <!-- Title-Movie Catalog ENDS -->
+
+                      <!-- Title-TVShow Catalog -->
+                        <div class="row">
+                          <h3 class="text-center" id="catalog-tv">TV-Shows</h3>
+                          <div class="col-sm-4" ng-repeat="shows in tvshow | orderBy: '-TvShowName' | filter:search">
+
+                            <div class="thumbnail">
+                              <img class="thumb-img" ng-src="{{shows.Tvthumb}}" alt="">
+                                <div class="caption text-center">
+                                  <div ng-hide="showDetails === true">
+                                    <p class="titleNm">Show: {{shows.TvShowName}}</p>
+                                    <p class="titleDr">Directed by: {{shows.TvDirector.toString()}} </br>
+                                    </p>
+                                  </div>
+                                  <button id="detailBtn" class="btn btn-xs btn-success"
+                                        ng-hide="showDetails === true"
+                                        ng-click="showDetails = !showDetails">
+                                        Details
+                                  </button>
+                                  <!-- Editing title button and function -->
+                                  <button
+                                    class="btn btn-xs btn-primary"
+                                    ng-show="showDetails"
+                                    ng-click="editTvShow(shows)">Edit
+                                  </button>
+
+                                  <button class="btn btn-xs btn-danger"
+                                          ng-show="showDetails === true"
+                                          ng-click="showDetails = !showDetails">
+                                          Close
+                                  </button>
+
+                                  <div class="details" ng-show="showDetails === true">
+                                    <h4>
+                                      <p class='detailsInfo'><span class="highlight">Cast:</span> {{shows.TvCast.toString()}}</p>
+                                      <p class='detailsInfo'><span class="highlight">Genre:</span> {{shows.TvGenre}}</p>
+                                      <p class='detailsInfo'><span class="highlight">IMDB-Rating:</span> {{shows.TvimdbRating}}<p>
+                                    </h4>
+                                  </div>
+
+                              </div>
+                            </div>      <!-- Thumbnail ends -->
+                          </div>
+                        </div>
+                        <!-- Div edit tvshow modal -->
+                          <script type="text/ng-template" id="modal.html">
+                            <div class="modal fade">
+                             <div class="modal-dialog">
+                               <div class="modal-content">
+                                 <div class="modal-header">
+                                   <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                   <h4 class="modal-title text-center">Edit-TV Show</h4>
+                                 </div>
+                                 <div class="modal-body">
+
+                                    <form class="form-horizontal">
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editTvName">TV Show:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.TvShowName" id="editTvName" placeholder="" name="editTvName">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editTvCast">Cast:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.TvCast" id="editTvCast" placeholder="" name="editTvCast">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editTvDirector">Director:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.TvDirector" id="editTvDirector" placeholder="" name="editTvDirector">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editTvGenre">Genre:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.TvGenre" id="editTvGenre" placeholder="" name="editTvGenre">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editTvIMDB">IMBD:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.TvimdbRating" id="editTvIMDB" placeholder="" name="editTvIMDB">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-sm-3" for="editTvYear">Year:</label>
+                                            <div class="col-sm-8">
+                                              <input type="text" class="form-control" ng-model="existingListing.TvReleaseYear" id="editTvYear" placeholder="" name="editTvYear">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </form>
+                                 </div>
+                                 <div class="modal-footer">
+                                   <button type="button" ng-click="close('No')" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                   <button type="button" ng-click="saveEdit()" class="btn btn-primary" data-dismiss="modal">Save</button>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                          </script>
+
+                    </section> <!-- section catalog ends -->
+
+
+              <!-- Title Listing start for Delete -->
+                    <section id="titledeletecatalog" class="bg-warning" ng-show="deleteSection">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <h3 id="deleteHeaderh3" class="text-center">Delete Listings</h3>
+                          <div id="deleteMovies">
+                            <h4 class="deleteh4 text-center">Movies</h4>
+                            <ul>
+                             <li ng-repeat="movie in movies | orderBy:'movieName' | filter:search">
+                              <img ng-src="{{movie.thumb}}" style="margin: -10px 10px 0 0; float: left; width: 50px; overflow: hidden;" ng-show="movie.thumb" />
+                                {{movie.movieName}} - {{movie.Cast.toString()}} - {{movie.Director.toString()}}
+                               <div class="remove" ng-click="removedMovie(movie)">x</div>
+                               <span class="display-right"> {{movie.Genre}} - {{movie.imdbRating}} - {{movie.ReleaseYear}}</span>
+                             </li>
+                           </ul>
+                          </div>
+                          <div id="deleteTV">
+                            <h4 class="deleteh4 text-center">TV-Shows</h4>
+                            <ul>
+                             <li ng-repeat="shows in tvshow | orderBy:'TvShowName' | filter:search">
+                              <img ng-src="{{shows.Tvthumb}}" style="margin: -10px 10px 0 0; float: left; width: 50px;" ng-show="shows.Tvthumb" />
+                               {{shows.TvShowName}} - {{shows.TvCast.toString()}} - {{shows.TvDirector.toString()}} - {{shows.TvGenre}}
+                               <div class="remove" ng-click="removedTv(shows)">x</div>
+                               <span class="display-right"> {{shows.TvimdbRating}} - {{shows.TvReleaseYear}}</span>
+                             </li>
+                           </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                    </section>
+       </div> <!-- Container ENDS -->
+    </div> <!-- Div Content ends -->
+  </section> <!-- section dashboard ends with titleController -->
+  </body>
+
+      <!-- Main Theme JS -->
+      <script src="js/main.js"></script>
+      <script src="js/movieApp.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap.min.js"></script>
+</html>

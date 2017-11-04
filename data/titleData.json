@@ -1,0 +1,79 @@
+[{
+		"movieTitles": [
+			{
+				"movieName": "Titanic",
+				"Cast": ["Leonardo DiCaprio", "Kate Winslet"],
+				"Director": ["James Camroon"],
+				"Genre": "Documentary",
+				"thumb": "img/movieimg/titanic.png",
+				"imdbRating": 7.5,
+				"ReleaseYear": 1997
+			},
+			{
+				"movieName": "Avengers",
+				"Cast": ["Robert Downey Jr", "Chris Evans", "Scarlett Johanson", "Chris Hemsworth"],
+				"Director": ["Joss Whedon"],
+				"Genre": "Action",
+				"thumb": "img/movieimg/avengers.png",
+				"imdbRating": 8,
+				"ReleaseYear": 2012
+			},
+			{
+				"movieName": "Wonder Woman",
+				"Cast": ["Gal Gadot", "Chris Pine", "Robin Wright", "David Thewlis"],
+				"Director": ["Patty Jenkins"],
+				"Genre": "Action",
+				"thumb": "img/movieimg/wonderWN.png",
+				"imdbRating": 7.9,
+				"ReleaseYear": 2017
+			},
+			{
+				"movieName": "Spiderman - Homecoming",
+				"Cast": ["Robert Downey Jr", "Tom Holland", "Zendaya", "Michael Keaton"],
+				"Director": ["Jon Watts"],
+				"Genre": "Action",
+				"thumb": "img/movieimg/spiderman.png",
+				"imdbRating": 9.3,
+				"ReleaseYear": 2017
+			}]
+	},
+	{
+		"tvShowTitles": [
+				{
+					"TvShowName": "Prison Break",
+					"TvCast": ["Dominic Purcell", "Wentworth Miller", "Robin Tunney"],
+					"TvDirector": ["Paul Scheuring"],
+					"TvGenre": "Crime/Drama",
+					"Tvthumb": "img/tvshowimg/prisonbreak.png",
+					"TvimdbRating": 8,
+					"TvReleaseYear": 2004
+			},
+			{
+				"TvShowName": "Suits",
+				"TvCast": ["Gabriel Macht", "Patrick J. Adams"],
+				"TvDirector": ["Aaron Korsh"],
+				"TvGenre": "Drama",
+				"Tvthumb": "img/tvshowimg/suits.png",
+				"TvimdbRating": 8.7,
+				"TvReleaseYear": 2011
+			},
+			{
+				"TvShowName": "Supernatural",
+				"TvCast": ["Jensen Ackles", "Jared Padalecki","Misha Collins"],
+				"TvDirector": ["Multiple"],
+				"TvGenre": "Drama/Horror",
+				"Tvthumb": "img/tvshowimg/Supernatural.png",
+				"TvimdbRating": 8.6,
+				"TvReleaseYear": 2005
+			},
+			{
+				"TvShowName": "Game of Thrones",
+				"TvCast": ["Peter Dinklage", "Nikolaj Coster-Waldau", "Emilia Clarke"],
+				"TvDirector": ["David Benioff"],
+				"TvGenre": "Drama",
+				"Tvthumb": "img/tvshowimg/gameofthrones.png",
+				"TvimdbRating": 9.5,
+				"TvReleaseYear": 2011
+			}]
+	}
+]

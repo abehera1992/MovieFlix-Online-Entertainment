@@ -1,0 +1,23 @@
+{
+  "name": "movieflixRadhikaS",
+  "description": "A netflix kinda project with angular and SPRING framework",
+  "main": "Radhika Project",
+  "authors": [
+    "Radhika Sondankar"
+  ],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE"
+  },
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-slick": "^0.2.1"
+  }
+}

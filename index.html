@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myindexApp'>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Radhika Sondankar">
+    <link rel="icon" type="image/png" href="img/movie-logo.png">
+
+    <title>MovieFlix</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="lib/device-mockups/device-mockups.min.css">
+
+    <!-- Theme CSS -->
+    <link href="css/mainStyle.css" rel="stylesheet">
+    <link href="css/userReg.css" rel="stylesheet">
+    <!-- Bower angular-slick css -->
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
+    <!-- jQuery -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Angular JS Plugins -->
+    <script src="js/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script> -->
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+    <script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
+
+
+    <!-- Angular slick-carousal JS -->
+    <script src="bower_components/slick-carousel/slick/slick.js"></script>
+    <script src="bower_components/angular-slick/dist/slick.js"></script>
+
+
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top"><span class="brand-heading">MovieFlix</span> - <span class="purple-color">Movies and more...</span></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <div class="search-bar">
+                      <input type="text" id="header-search" name="header-search" placeholder="Browse" />
+                    </div>
+                  </li>
+                    <li>
+                        <a class="page-scroll" href="#catalog">Catalog</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#pricing">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" id="main-nav-signin"><span id="account">Sign In</span></a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)" id="account-menu-button"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- Main nav ends -->
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h1>Watch your daily dose of movies and Popular shows from across the networks at one place.</h1>
+                            <a href="#0" id="content-pg-login" class="btn btn-outline btn-xl">Start Now for Free!</a>
+                        </div>
+                          <!-- After user login header-content -->
+                          <div id="header-content-inner-userLogin"></div>
+
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                  <img id="landing-pg-img" src="img/demo-screen-1.jpg" alt="" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- this is the entire modal form, including the background -->
+	<div class="cd-user-modal">
+		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+			<ul class="cd-switcher">
+				<li><a href="javascript:void(0)">Sign in</a></li>
+				<li><a href="javascript:void(0)">New account</a></li>
+			</ul>
+
+			<div id="cd-login"> <!-- log in form -->
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Password</label>
+						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
+						<a href="#0" class="hide-password">Hide</a>
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width" type="submit" id="user-Login-Btn" value="Login">
+					</p>
+				</form>
+
+				<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
+				<!-- <a href="#0" class="cd-close-form">Close</a> -->
+			</div> <!-- cd-login -->
+
+			<div id="cd-signup"> <!-- sign up form -->
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signup-username">Username</label>
+						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signup-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">Password</label>
+						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+						<a href="#0" class="hide-password">Hide</a>
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" id="user-Register-Btn" value="Create account">
+					</p>
+				</form>
+			</div> <!-- cd-signup -->
+
+			<div id="cd-reset-password"> <!-- reset password form -->
+				<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="reset-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" value="Reset password">
+					</p>
+				</form>
+
+				<p class="cd-form-bottom-message"><a href="javascript:void(0)">Back to log-in</a></p>
+			</div> <!-- cd-reset-password -->
+			<a href="javascript:void(0)" class="cd-close-form">Close</a>
+		</div> <!-- cd-user-modal-container -->
+	</div> <!-- cd-user-modal -->
+
+    <section id="catalog" class="catalog bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="section-heading">Movie a-la-carte</p>
+                </div>
+            </div>
+
+<!-- USER PROFILE DROPDOWN BTN STARTS -->
+          <div id="user-profile-after-pg">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="dropdown">
+                       <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary">
+                           Filter<span class="caret"></span>
+                       </a>
+                       <ul id="dropdown-menu-main" class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                         <h6 class="dropdown-header">Top-rated</h6>
+                         <li><a href="#">Movies</a></li>
+                         <li><a href="#">TV Shows</a></li>
+                         <li class="divider"></li>
+                         <li class="dropdown-submenu">
+                           <a tabindex="-1" href="#">More...</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-submenu">
+                                  <a tabindex="-1" href="#">Type</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Movie</a></li>
+                                        <li><a href="#">TV Show</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                  <a href="#">Release Year</a>
+                                    <ul class="dropdown-menu">
+                                       <li><a href="#">2017</a></li>
+                                       <li><a href="#">2016</a></li>
+                                       <li><a href="#">2015</a></li>
+                                       <li><a href="#">2014</a></li>
+                                       <li><a href="#">2013</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                 <a href="#">Genre</a>
+                                  <ul class="dropdown-menu">
+                                     <li><a href="#">Action</a></li>
+                                     <li><a href="#">Comedy</a></li>
+                                     <li><a href="#">Horror</a></li>
+                                     <li><a href="#">Animated</a></li>
+                                     <li><a href="#">Documentry</a></li>
+                                  </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                  <a href="#">Even More..</a>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="#">IMDB ratings</a></li>
+                                    <li><a href="#">IMDB votes</a></li>
+                                  </ul>
+                                </li>
+                           </ul>
+                         </li>
+                       </ul>
+                   </div>
+                    <!-- div dropdown ends -->
+              </div>
+            </div> <!-- dropdown-menu row ends -->
+          </div>
+<!-- USER PROFILE DROPDOWN BTN ENDS -->
+
+            <!-- carousal movie starts -->
+            <div class="row" ng-controller="indexController">
+              <div class="col-md-12">
+                <h3 id="carousal-movie-header">Top Movies</h3>
+                <div class="slick-container">
+                  <slick infinite=true slides-to-show=3 slides-to-scroll=1>
+                    <div class="slick-item" ng-repeat="movie in movies">
+                      <img ng-click="openMovInfo(movie)" src="{{movie.thumb}}" />
+                    </div>
+                  </slick>
+                </div>
+                <!-- Div display movie modal -->
+                  <script type="text/ng-template" id="movieModal.html">
+                    <div class="modal fade">
+                     <div class="modal-dialog">
+                       <div class="modal-content">
+                         <div class="modal-header">
+                           <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+                           <h4 class="modal-title text-center">{{displaymovie.movieName}}</h4>
+                         </div>
+                         <div class="modal-body">
+                            <form class="form-horizontal">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="details">
+                                      <p class='detailsInfo'><span class="highlight">Directed by: </span>{{displaymovie.Director.toString()}} </p>
+                                      <p class='detailsInfo'><span class="highlight">Cast: </span>{{displaymovie.Cast.toString()}}</p>
+                                      <p class='detailsInfo'><span class="highlight">Genre: </span> {{displaymovie.Genre}}</p>
+                                      <p class='detailsInfo'><span class="highlight">IMDB-Rating: </span>{{displaymovie.imdbRating}}<p>
+                                      <p class='detailsInfo'><span class="highlight">Release-Year: </span>{{displaymovie.ReleaseYear}}<p>
+                                        <hr class="titleDisplayhr"/>
+                                      <textarea id="movieComment" class="titleComment col-sm-8" class="form-control" rows="4" ng-model="movieComment" placeholder="Comments"></textarea>
+
+
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                         </div>
+                         <div class="modal-footer">
+                           <button type="button" ng-click="close('No')" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                           <button type="button" ng-click="saveEdit()" class="btn btn-primary" data-dismiss="modal">Watch</button>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                  </script>
+              </div>
+
+            </div>
+            <!-- carousal movie ends -->
+            <!-- carousal TV shows starts -->
+            <div class="row" ng-controller="indexController">
+              <div class="col-md-12">
+                <h3 id="carousal-tv-header">Top TV Shows</h3>
+                <div class="slick-container">
+                  <slick infinite=true slides-to-show=3 slides-to-scroll=1>
+                    <div class="slick-item" ng-repeat="shows in tvshow">
+                      <img ng-click="openTvInfo(shows)" src="{{shows.Tvthumb}}" />
+                    </div>
+                  </slick>
+                </div>
+                  <!-- Div display tvshow modal -->
+                  <script type="text/ng-template" id="tvModal.html">
+                    <div class="modal fade">
+                     <div class="modal-dialog">
+                       <div class="modal-content">
+                         <div class="modal-header">
+                           <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+                           <h4 class="modal-title text-center" ng-model="displayListing.movieName">{{displaytv.TvShowName}}</h4>
+                         </div>
+                         <div class="modal-body">
+                            <form class="form-horizontal">
+                              <div class="row">
+                                <div class="col-md-10">
+                                  <div class="details">
+                                      <p class='detailsInfo'><span class="highlight">Directed by: </span>{{displaytv.TvDirector.toString()}} </p>
+                                      <p class='detailsInfo'><span class="highlight">Cast: </span>{{displaytv.TvCast.toString()}}</p>
+                                      <p class='detailsInfo'><span class="highlight">Genre: </span>{{displaytv.TvGenre}}</p>
+                                      <p class='detailsInfo'><span class="highlight">IMDB-Rating: </span>{{displaytv.TvimdbRating}}<p>
+                                      <p class='detailsInfo'><span class="highlight">Release-Year: </span>{{displaytv.TvReleaseYear}}<p>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                         </div>
+                         <div class="modal-footer">
+                           <button type="button" ng-click="close('No')" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                           <button type="button" ng-click="saveEdit()" class="btn btn-primary" data-dismiss="modal">Watch</button>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                  </script>
+
+              </div>
+            </div>
+            <!-- carousal TV shows ends -->
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2 id="pricing-h2">Pricing</h2>
+                        <p id="pricing-h2-subheading" class="text-muted">Get <span class="purple-color font-wt">more</span> for less!</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Pricing -->
+            <div class="row">
+          		<div class="col-md-4">
+          			<div class="pricing1 hover-effect">
+          				<div class="pricing1-head">
+          					<h3>Trial</h3>
+          					<h4>Free<span>1-Month</span></h4>
+          				</div>
+          				<ul class="pricing1-content list-unstyled">
+          					<li>No HD available</li>
+          					<li>support 1-screen at a time</li>
+          					<li>Cancel anytime</li>
+          				</ul>
+          				<div class="pricing1-footer">
+          					<p>Trying it is to know it!</p>
+          					<a href="javascript:;" class="btn yellow-crusta">Subscribe</a>
+          				</div>
+          			</div>
+          		</div>
+          		<div class="col-md-4">
+          			<div class="pricing1 pricing1-active hover-effect">
+          				<div class="pricing1-head pricing1-head-active">
+          					<h3>Basic</h3>
+          					<h4><i>$</i>5<i>.99</i><span>Per Month</span></h4>
+          				</div>
+          				<ul class="pricing1-content list-unstyled">
+          					<li>HD available</li>
+          					<li>Support upto 2-screen at a time</li>
+          					<li>Cancel anytime</li>
+          				</ul>
+          				<div class="pricing1-footer">
+          					<p>More sharing for your family!</p>
+          					<a href="javascript:;" class="btn yellow-crusta">Subscribe</a>
+          				</div>
+          			</div>
+          		</div>
+          		<div class="col-md-4">
+          			<div class="pricing1 hover-effect">
+          				<div class="pricing1-head">
+          					<h3>Premium</h3>
+          					<h4><i>$</i>9<i>.99</i><span>Per Month</span></h4>
+          				</div>
+          				<ul class="pricing1-content list-unstyled">
+          					<li>Ultra-HD Available</li>
+          					<li>Supports upto 4-screen at a time</li>
+          					<li>Cancel anytime</li>
+          				</ul>
+          				<div class="pricing1-footer">
+          					<p>Ultimate entertainment experience!</p>
+          					<a href="javascript:;" class="btn yellow-crusta">Subscribe</a>
+          				</div>
+          			</div>
+          		</div>
+          		<!--//End Pricing -->
+          	</div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact bg-primary">
+        <div class="container">
+            <h2>We <i class="fa fa-heart"></i> Entertaining <i class="fa fa-users">People!</i></h2>
+            <ul class="list-inline list-social">
+                <li class="social-twitter">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li class="social-facebook">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="social-google-plus">
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2017 Abhishek Behera.</p>
+            <ul class="list-inline">
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+                <li>
+                    <a href="#">Terms</a>
+                </li>
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+
+
+    <!-- Theme JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/indexApp.js"></script>
+
+    <!-- Bootstrap Toggle Plugin -->
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+</body>
+
+</html>
